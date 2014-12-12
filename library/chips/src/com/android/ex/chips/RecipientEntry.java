@@ -26,13 +26,13 @@ import android.text.util.Rfc822Tokenizer;
  * Represents one entry inside recipient auto-complete list.
  */
 public class RecipientEntry {
-    /* package */ static final int INVALID_CONTACT = -1;
+    protected static final int INVALID_CONTACT = -1;
     /**
      * A GENERATED_CONTACT is one that was created based entirely on
      * information passed in to the RecipientEntry from an external source
      * that is not a real contact.
      */
-    /* package */ static final int GENERATED_CONTACT = -2;
+    protected static final int GENERATED_CONTACT = -2;
 
     /** Used when {@link #mDestinationType} is invalid and thus shouldn't be used for display. */
     /* package */ static final int INVALID_DESTINATION_TYPE = -1;
