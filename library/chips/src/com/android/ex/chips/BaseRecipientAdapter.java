@@ -782,7 +782,7 @@ public class BaseRecipientAdapter extends BaseAdapter implements Filterable, Acc
     }
 
     /** Resets {@link #mEntries} and notify the event to its parent ListView. */
-    private void updateEntries(List<RecipientEntry> newEntries) {
+    protected void updateEntries(List<RecipientEntry> newEntries) {
         mEntries = newEntries;
         mEntriesUpdatedObserver.onChanged(newEntries);
         notifyDataSetChanged();
