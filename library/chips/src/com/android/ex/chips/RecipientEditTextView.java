@@ -91,7 +91,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
 
     private Drawable mInvalidChipBackground;
 
-    private Drawable mChipBackgroundPressed;
+    protected Drawable mChipBackgroundPressed;
 
     private float mChipHeight;
 
@@ -568,7 +568,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
         return createChipBitmap(contact, paint, photo, background);
     }
 
-    private Bitmap createChipBitmap(RecipientEntry contact, TextPaint paint, Bitmap icon,
+    protected Bitmap createChipBitmap(RecipientEntry contact, TextPaint paint, Bitmap icon,
         Drawable background) {
         if (background == null) {
             Log.w(TAG, "Unable to draw a background for the chips as it was never set");
@@ -831,7 +831,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
     }
 
     // Visible for testing.
-    /* package */ void setChipHeight(int height) {
+    protected void setChipHeight(int height) {
         mChipHeight = height;
     }
 
@@ -1241,7 +1241,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
         setSelection(getText().length());
     }
 
-    private boolean commitChip(int start, int end, Editable editable) {
+    protected boolean commitChip(int start, int end, Editable editable) {
         ListAdapter adapter = getAdapter();
         if (adapter != null && adapter.getCount() > 0 && enoughToFilter()
                 && end == getSelectionEnd() && !isPhoneQuery()) {
@@ -1743,7 +1743,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
         submitItem(entry);
     }
 
-    private void submitItem(RecipientEntry entry) {
+    protected void submitItem(RecipientEntry entry) {
         if (entry == null) {
             return;
         }
@@ -2116,7 +2116,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
         }
     }
 
-    private boolean shouldShowEditableText(DrawableRecipientChip currentChip) {
+    protected boolean shouldShowEditableText(DrawableRecipientChip currentChip) {
         long contactId = currentChip.getContactId();
         return contactId == RecipientEntry.INVALID_CONTACT
                 || (!isPhoneQuery() && contactId == RecipientEntry.GENERATED_CONTACT);
@@ -2208,7 +2208,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
      * Remove the chip and any text associated with it from the RecipientEditTextView.
      */
     // Visible for testing.
-    /* package */void removeChip(DrawableRecipientChip chip) {
+    protected void removeChip(DrawableRecipientChip chip) {
         Spannable spannable = getSpannable();
         int spanStart = spannable.getSpanStart(chip);
         int spanEnd = spannable.getSpanEnd(chip);
